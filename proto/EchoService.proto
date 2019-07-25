@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+// option go_package = "echopb";
+
+service EchoService {
+  rpc Echo (EchoRequest) returns (EchoResponse) {}
+}
+
+message EchoRequest {
+  string data = 1;
+}
+
+message EchoResponse {
+  string data = 2;
+}
