@@ -32,44 +32,17 @@ Slackware packages:
 * proto3: http://slackbuilds.org/repository/14.2/misc/protobuf3
 * Go: http://slackbuilds.org/repository/14.2/development/google-go-lang
 
-## Generate the certificates
+## Run the server and client
 
-Generate a root certificate for a custom certificate
-authority. Generate a certificate for a server. Generate a certificate
-for a client (i.e., person user).
-
-A few scripts are included to make certificate generation easier. If
-you plan on using these scripts, make sure that you customize them to
-your needs.
+Run the server with automatically generated certificates:
 
 ```shell
-$ cd certificate/
-$ ./generate_ca.sh
-$ ./generate_client_certificate.sh
-$ ./generate_server_certificate.sh
+make run-server
 ```
 
-## Run the server
-
-Run the server with the path to the files that contain the root
-certificate authority, and the server's own certificate and private
-key.
+In a different terminal, run the client with automatically generated
+certificates:
 
 ```shell
-go run server/server.go \
---ca_cert="rootCA.crt" \
-  --self_cert="server.crt" \
-  --self_key="server.key"
+make run-client
 ```
-
-## Run the client
-
-Run the client with the path to the files that contain the root
-certificate, the client's own certificate and private key, and the
-server certificate.
-
-go run client/client.go \
-  --ca_cert="certificate/rootCA.crt" \
-  --self_cert="certificate/jose@fritz.box.crt" \
-  --self_key="certificate/jose@fritz.box.key" \
-  --server_cert="certificate/tower.fritz.box:27388.crt"
