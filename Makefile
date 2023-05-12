@@ -7,7 +7,7 @@ dist/rootCA.crt:
 
 dist/server.crt:
 	mkdir -p dist/
-	certificate/generate_certificate.sh dist/server dist/rootCA $$(hostname -f):27388
+	certificate/generate_certificate.sh dist/server dist/rootCA $$(hostname -f)
 
 dist/client.crt:
 	mkdir -p dist/
